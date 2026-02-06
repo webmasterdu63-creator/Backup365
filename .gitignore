@@ -20,3 +20,31 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+# --- SÉCURITÉ (À NE JAMAIS ENVOYER) ---
+.env
+*.pem
+*.key
+secrets.json
+
+# --- DONNÉES DE SAUVEGARDE ---
+# On ignore le dossier où les sauvegardes sont réellement stockées
+backups/
+temp_data/
+*.zip
+*.tar.gz
+
+# --- PYTHON (si utilisé) ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# --- LOGS ---
+logs/
+*.log
+
+# --- SYSTÈME ---
+.DS_Store
+Thumbs.db
