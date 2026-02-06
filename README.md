@@ -1,4 +1,4 @@
-# Backup365 Automatisation de sauvegardes Windows &amp; Linux 
+# Backup365 - Automatisation de sauvegardes Windows &amp; Linux 
 
 <p align="center">
   <img src="https://github.com/webmasterdu63-creator/Backup365/blob/main/CloudBackup365.jpg" width="200" alt="Backup365 Logo">
