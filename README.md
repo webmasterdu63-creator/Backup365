@@ -12,6 +12,31 @@ Automatisation de sauvegardes Windows &amp; Linux
   <img src="https://img.shields.io/badge/Type-Automated%20Backup-orange" alt="Type">
 </p>
 
+# 🛡️ Backup365
 
+**Backup365** est une solution open-source conçue pour automatiser la sauvegarde des données critiques de l'écosystème Microsoft 365 (OneDrive, Outlook, SharePoint). 
+
+## 🚀 Fonctionnalités
+* **Multi-tenant** : Support de plusieurs comptes Microsoft.
+* **Sécurisé** : Authentification via Azure AD (OAuth 2.0).
+* **Flexible** : Sauvegarde locale ou vers un stockage Cloud (S3, Azure Blob).
+* **Logging** : Rapports détaillés après chaque exécution.
+
+## 🏗️ Architecture du Projet
+Le schéma ci-dessous illustre le flux de données entre Microsoft Graph API et votre stockage local :
+
+
+
+## 🛠️ Installation
+
+1. **Cloner le projet**
+   ```bash
+   git clone [https://github.com/webmasterdu63-creator/Backup365.git](https://github.com/webmasterdu63-creator/Backup365.git)
+   cd Backup365
+
+   Installer les dépendances (Exemple pour Python)
+   pip install -r requirements.txt
+
+   
 ## 🛡️ About Backup365
 **Backup365** is a modern automation tool designed to ensure your data is safe every day of the year. It handles scheduled backups for both Windows and Linux environments with ease.
