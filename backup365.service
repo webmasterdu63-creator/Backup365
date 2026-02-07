@@ -1,0 +1,15 @@
+[Unit]
+Description=Backup365 - Service de sauvegarde automatique
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /chemin/vers/Backup365/src/linux/backup.sh --compress --cloud
+WorkingDirectory=/chemin/vers/Backup365/src/linux
+StandardOutput=append:/chemin/vers/Backup365/src/linux/backup.log
+StandardError=append:/chemin/vers/Backup365/src/linux/error.log
+Restart=on-failure
+User=jean
+
+[Install]
+WantedBy=multi-user.target
