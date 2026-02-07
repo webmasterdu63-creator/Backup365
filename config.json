@@ -1,22 +1,2 @@
-$allowed = Get-Content "./config.json" | ConvertFrom-Json
-$extensions = $allowed.allowed_extensions
 
-foreach ($folder in $folders) {
-    Get-ChildItem -Path $folder -Recurse -File | Where-Object {
-        $extensions -contains $_.Extension.ToLower()
-    } | ForEach-Object {
-        # Action de sauvegarde ici
-    }
-}
-allowed_ext=(".doc" ".docx" ".odt" ".pdf" ".xls" ".xlsx" ".ppt" ".pptx")
-
-for folder in "${folders[@]}"; do
-    find "$folder" -type f | while read -r file; do
-        ext="${file##*.}"
-        ext=".$ext"
-        if printf '%s\n' "${allowed_ext[@]}" | grep -q "^$ext$"; then
-            # Action de sauvegarde ici
-        fi
-    done
-done
 
