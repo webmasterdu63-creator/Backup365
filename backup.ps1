@@ -25,6 +25,11 @@ foreach ($folder in $folders) {
 param(
     [switch]$DryRun
 )
+if ($Cloud) {
+    Write-Host "Envoi de l'archive sur OneDrive..."
+    rclone copy $archiveName onedrive:Backup365/
+    Log "Archive envoyée sur OneDrive : $archiveName"
+}
 
 Write-Host "Backup365 - Script Windows chargé."
 
