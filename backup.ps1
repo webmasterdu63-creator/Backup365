@@ -57,3 +57,9 @@ Write-Host "Compression de la sauvegarde en cours..."
 Compress-Archive -Path "$destination\*" -DestinationPath $archiveName -Force
 Log "Archive créée : $archiveName"
 Write-Host "Archive créée : $archiveName"
+if ($Compress) {
+    $archiveName = "backup-$(Get-Date -Format 'yyyy-MM-dd').zip"
+    Write-Host "Compression en cours..."
+    Compress-Archive -Path "$destination\*" -DestinationPath $archiveName -Force
+    Log "Archive créée : $archiveName"
+}
