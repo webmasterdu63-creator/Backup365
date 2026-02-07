@@ -1,1 +1,50 @@
+# ===========================
+#   Backup365 Configuration
+# ===========================
+
+# Extensions autorisées
+allowed_extensions:
+  - .doc
+  - .docx
+  - .odt
+  - .pdf
+  - .xls
+  - .xlsx
+  - .ppt
+  - .pptx
+
+# Dossiers à sauvegarder
+folders_to_backup:
+  - "/home/jean/Documents"
+  - "/home/jean/Desktop"
+
+# Destination locale
+backup_destination: "/home/jean/Backup365"
+
+# Compression
+compression:
+  enabled: true
+  format: "tar.gz"   # tar.gz | zip
+
+# Cloud
+cloud:
+  enabled: true
+  provider: "onedrive"   # onedrive | s3 | gdrive
+  remote_path: "Backup365/"
+
+# Notifications
+notifications:
+  mail:
+    enabled: false
+    to: "jean@example.com"
+    smtp_server: "smtp.example.com"
+
+  webhook:
+    enabled: true
+    url: "https://discord.com/api/webhooks/XXXXXX"
+
+# Options par défaut
+defaults:
+  dry_run: false
+  verbose: true
 
