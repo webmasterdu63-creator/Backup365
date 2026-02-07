@@ -1,4 +1,20 @@
 #!/bin/bash
+# Options par défaut
+dryrun=false
+compress=false
+cloud=false
+
+# Lecture des options CLI
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --dry-run) dryrun=true ;;
+        --compress) compress=true ;;
+        --cloud) cloud=true ;;
+        *) echo "Option inconnue : $1" ;;
+    esac
+    shift
+done
+
 echo "Backup365 - Script Linux chargé."
 logfile="./backup.log"
 
