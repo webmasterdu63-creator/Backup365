@@ -1,1 +1,8 @@
+{
+  "allowed_extensions": [
+    ".doc", ".docx", ".odt", ".pdf",
+    ".xls", ".xlsx",
+    ".ppt", ".pptx"
+  ]
+}
 
