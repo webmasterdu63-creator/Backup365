@@ -73,3 +73,10 @@ for folder in "${folders[@]}"; do
         fi
     done
 done
+archive_name="backup-$(date '+%Y-%m-%d').tar.gz"
+
+echo "Compression de la sauvegarde en cours..."
+tar -czf "$archive_name" -C "$destination" .
+log "Archive créée : $archive_name"
+echo "Archive créée : $archive_name"
+
