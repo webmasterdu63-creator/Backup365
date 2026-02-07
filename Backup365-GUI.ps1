@@ -160,6 +160,11 @@ $btnRun.BackColor = $bgColor
 $btnRun.ForeColor = $accentColor
 $btnRun.FlatStyle = "Flat"
 $btnRun.Add_Click({
+# --- Effet de progression fluide ---
+for ($i = 0; $i -le 40; $i += 2) {
+    $progress.Value = $i
+    Start-Sleep -Milliseconds 40
+}
 
     if ([string]::IsNullOrWhiteSpace($textSource.Text) -or [string]::IsNullOrWhiteSpace($textDest.Text)) {
         $logs.AppendText("[ERROR] Source or destination is empty.`r`n")
@@ -191,10 +196,24 @@ DRY_RUN="$($chkDry.Checked.ToString().ToLower())"
     $proc = New-Object System.Diagnostics.Process
     $proc.StartInfo = $psi
     $proc.Start() | Out-Null
+# --- Progression pendant l'exécution ---
+while (!$proc.HasExited) {
+    if ($progress.Value -lt 90) {
+        $progress.Value += 1
+    }
+    Start-Sleep -Milliseconds 120
+}
 
     $out = $proc.StandardOutput.ReadToEnd()
     $err = $proc.StandardError.ReadToEnd()
     $proc.WaitForExit()
+# --- Finalisation ---
+for ($i = $progress.Value; $i -le 100; $i += 5) {
+    $progress.Value = $i
+    Start-Sleep -Milliseconds 50
+}
+
+$logs.AppendText("[INFO] Backup completed successfully.`r`n")
 
     if ($out) { $logs.AppendText($out + "`r`n") }
     if ($err) { $logs.AppendText("[ERROR] " + $err + "`r`n") }
