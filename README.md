@@ -22,7 +22,139 @@
 
 ## 🏗️ Architecture du Projet
 Le schéma ci-dessous illustre le flux de données entre Microsoft Graph API et votre stockage local :
+🔐 Accès GitHub : SSH vs Token (Guide Court & Essentiel)
+1. HTTPS + Token (Méthode classique)
 
+Principe  
+Vous clonez un dépôt via une URL HTTPS :
+Code
+
+https://github.com/username/repo.git
+
+Git demande un mot de passe → vous devez fournir un Personal Access Token (PAT).
+
+Inconvénients
+
+    Le token expire ou doit être régénéré
+
+    Peu adapté à l’automatisation (cron, systemd, scripts)
+
+    Demandes régulières d’authentification
+
+    Moins pratique pour un workflow professionnel
+
+2. Authentification SSH (Recommandée)
+
+Principe  
+Vous clonez via une URL SSH :
+Code
+
+git@github.com:username/repo.git
+
+Votre machine utilise une clé privée, et GitHub stocke la clé publique.
+
+Avantages
+
+    Aucun token requis
+
+    Aucun mot de passe
+
+    Parfait pour l’automatisation
+
+    Sécurisé et stable
+
+    Configuration unique, valable à long terme
+
+3. Générer une clé SSH (Linux)
+Code
+
+ssh-keygen -t ed25519 -C "votre_email_github"
+
+Appuyez sur Entrée pour chaque question.
+
+Les clés seront créées dans :
+
+    ~/.ssh/id_ed25519 (clé privée)
+
+    ~/.ssh/id_ed25519.pub (clé publique)
+
+4. Ajouter la clé publique dans GitHub
+
+    Afficher la clé publique :
+
+Code
+
+cat ~/.ssh/id_ed25519.pub
+
+    Copier la sortie
+
+    Aller dans GitHub → Settings → SSH and GPG keys → New SSH key
+
+    Coller la clé et valider
+
+5. Tester l’authentification SSH
+Code
+
+ssh -T git@github.com
+
+Message attendu :
+Code
+
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+
+Cela confirme que SSH fonctionne.
+6. Cloner un dépôt en SSH
+Code
+
+git clone git@github.com:username/repo.git
+
+Aucun token, aucun mot de passe, aucune interaction.
+7. Problèmes fréquents & Solutions
+❌ “Permission denied (publickey)”
+
+    Pas de clé SSH sur la machine
+
+    Mauvaise clé ajoutée dans GitHub
+
+    Utilisation d’une URL HTTPS
+
+Solution : régénérer la clé et ajouter la clé publique dans GitHub.
+❌ GitHub demande encore un token
+
+Vous utilisez encore une URL HTTPS.
+
+Solution : passer à SSH :
+Code
+
+git remote set-url origin git@github.com:username/repo.git
+
+❌ Code de vérification GitHub incorrect
+
+    Vous utilisez un ancien code
+
+    Le code a expiré
+
+    Le mail est dans Spam / Promotions
+
+    L’adresse GitHub n’est pas “Verified”
+
+Solution :
+
+    cliquer sur Verify via email
+
+    utiliser le dernier code reçu
+
+    vérifier les dossiers Gmail
+
+    se déconnecter/reconnecter si nécessaire
+
+8. Résumé
+
+    HTTPS + Token = fonctionne, mais limité
+
+    SSH = sécurisé, automatisable, professionnel
+
+    Une fois SSH configuré → plus jamais de token
 
 
 ## 🛠️ Installation
