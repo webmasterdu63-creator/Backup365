@@ -5,6 +5,16 @@ logfile="./backup.log"
 log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$logfile"
 }
+# Rotation des logs : garder 7 jours max
+find . -name "backup.log.*" -mtime +7 -delete
+
+# Renommer l'ancien log avec la date du jour
+if [[ -f "backup.log" ]]; then
+    mv backup.log "backup.log.$(date '+%Y-%m-%d')"
+fi
+
+# Nouveau fichier log
+logfile="./backup.log"
 
 config_file="../../config.json"
 
