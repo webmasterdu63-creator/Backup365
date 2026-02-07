@@ -7,5 +7,14 @@ config_file="../../config.json"
 allowed_ext=($(jq -r '.allowed_extensions[]' "$config_file"))
 folders=($(jq -r '.folders_to_backup[]' "$config_file"))
 destination=$(jq -r '.backup_destination' "$config_file")
+{
+  "allowed_extensions": [
+    ".doc", ".docx", ".odt", ".pdf",
+    ".xls", ".xlsx",
+    ".ppt", ".pptx"
+  ],
+  "folders_to_backup": [],
+  "backup_destination": ""
+}
 
 
