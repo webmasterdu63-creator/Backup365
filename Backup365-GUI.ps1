@@ -131,6 +131,20 @@ $logs.BackColor = [System.Drawing.Color]::FromArgb(5, 10, 15)
 $logs.ForeColor = $accentColor
 $logs.BorderStyle = "FixedSingle"
 $form.Controls.Add($logs)
+# --- Logo ASCII ---
+$logo = @"
+██████╗  █████╗  ██████╗ ██╗   ██╗██╗  ██╗██████╗  ██████╗ 
+██╔══██╗██╔══██╗██╔════╝ ██║   ██║██║ ██╔╝██╔══██╗██╔════╝ 
+██████╔╝███████║██║  ███╗██║   ██║█████╔╝ ██████╔╝██║  ███╗
+██╔══██╗██╔══██║██║   ██║██║   ██║██╔═██╗ ██╔══██╗██║   ██║
+██║  ██║██║  ██║╚██████╔╝╚██████╔╝██║  ██╗██║  ██║╚██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ 
+
+        Backup365 :: CircuitBoard GUI
+             TSSR Edition 2026
+"@
+
+$logs.AppendText($logo + "`r`n")
 
 # --- Bouton Run ---
 $btnRun = New-Object System.Windows.Forms.Button
