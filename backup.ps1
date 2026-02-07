@@ -46,3 +46,9 @@ foreach ($folder in $folders) {
     }
 }
 
+$archiveName = "backup-$(Get-Date -Format 'yyyy-MM-dd').zip"
+
+Write-Host "Compression de la sauvegarde en cours..."
+Compress-Archive -Path "$destination\*" -DestinationPath $archiveName -Force
+Log "Archive créée : $archiveName"
+Write-Host "Archive créée : $archiveName"
