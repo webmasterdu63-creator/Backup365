@@ -145,6 +145,11 @@ $logo = @"
 "@
 
 $logs.AppendText($logo + "`r`n")
+# --- Son de démarrage ---
+Add-Type -AssemblyName System.Media
+$player = New-Object System.Media.SoundPlayer
+$player.SoundLocation = "$PSScriptRoot\windows\dragon.mp3"
+$player.Play()
 
 # --- Bouton Run ---
 $btnRun = New-Object System.Windows.Forms.Button
