@@ -1,2 +1,6 @@
+$config = Get-Content "../../config.json" | ConvertFrom-Json
+$extensions = $config.allowed_extensions
+$folders = $config.folders_to_backup
+$destination = $config.backup_destination
 
 
