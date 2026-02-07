@@ -1,5 +1,10 @@
 Write-Host "Backup365 - Script Windows chargé."
 Write-Host "Backup365 - Script Windows chargé."
+param(
+    [switch]$DryRun,
+    [switch]$Compress,
+    [switch]$Cloud
+)
 
 $config = Get-Content "../../config.json" | ConvertFrom-Json
 $extensions = $config.allowed_extensions
@@ -20,6 +25,11 @@ foreach ($folder in $folders) {
 param(
     [switch]$DryRun
 )
+if ($Cloud) {
+    Write-Host "Envoi de l'archive sur OneDrive..."
+    rclone copy $archiveName onedrive:Backup365/
+    Log "Archive envoyée sur OneDrive : $archiveName"
+}
 
 Write-Host "Backup365 - Script Windows chargé."
 
@@ -46,3 +56,15 @@ foreach ($folder in $folders) {
     }
 }
 
+$archiveName = "backup-$(Get-Date -Format 'yyyy-MM-dd').zip"
+
+Write-Host "Compression de la sauvegarde en cours..."
+Compress-Archive -Path "$destination\*" -DestinationPath $archiveName -Force
+Log "Archive créée : $archiveName"
+Write-Host "Archive créée : $archiveName"
+if ($Compress) {
+    $archiveName = "backup-$(Get-Date -Format 'yyyy-MM-dd').zip"
+    Write-Host "Compression en cours..."
+    Compress-Archive -Path "$destination\*" -DestinationPath $archiveName -Force
+    Log "Archive créée : $archiveName"
+}
