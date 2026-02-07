@@ -155,7 +155,60 @@ Solution :
     SSH = sécurisé, automatisable, professionnel
 
     Une fois SSH configuré → plus jamais de token
+🪟 Installation (Windows)
+markdown
 
+## 🪟 Installation (Windows)
+
+### 1. Récupérer le projet
+Téléchargez ou clonez la branche Windows :
+
+```powershell
+git clone git@github.com:webmasterdu63-creator/Backup365.git
+cd Backup365
+git checkout windows
+
+Vous pouvez aussi télécharger le ZIP depuis GitHub si vous préférez.
+2. Configurer le fichier .env
+
+Éditez le fichier .env situé à la racine de la branche windows :
+env
+
+BACKUP_SOURCE="C:\Users\rayan\Documents"
+BACKUP_DEST="D:\Backups"
+LOG_LEVEL="INFO"
+DRY_RUN="false"
+
+Adaptez les chemins selon votre système.
+3. Exécuter le script PowerShell
+
+Ouvrez PowerShell en mode administrateur, puis lancez :
+powershell
+
+powershell -ExecutionPolicy Bypass -File windows/Backup365.ps1
+
+4. Résultat
+
+Le script :
+
+    charge automatiquement les variables du .env
+
+    vérifie les chemins
+
+    copie les fichiers (ou affiche ce qui serait copié en mode dry-run)
+
+    affiche des logs propres et horodatés
+
+Code
+
+# 🎯 Résultat
+
+Avec cette section, ton README devient :
+
+- clair  
+- professionnel  
+- multi‑OS  
+- facile à suivre pour un recruteur ou un utilisateur  
 
 ## 🛠️ Installation
 
