@@ -1,5 +1,10 @@
 Write-Host "Backup365 - Script Windows chargé."
 Write-Host "Backup365 - Script Windows chargé."
+param(
+    [switch]$DryRun,
+    [switch]$Compress,
+    [switch]$Cloud
+)
 
 $config = Get-Content "../../config.json" | ConvertFrom-Json
 $extensions = $config.allowed_extensions
