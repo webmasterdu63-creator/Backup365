@@ -1,5 +1,10 @@
 #!/bin/bash
 echo "Backup365 - Script Linux chargé."
+logfile="./backup.log"
+
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$logfile"
+}
 
 config_file="../../config.json"
 
@@ -58,5 +63,3 @@ for folder in "${folders[@]}"; do
         fi
     done
 done
-
-
